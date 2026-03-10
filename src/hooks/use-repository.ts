@@ -1,10 +1,6 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { QUERY_KEYS } from "../constants/query-keys";
-import {
-  fetchRepository,
-  fetchCommitActivity,
-  fetchOpenPRCount,
-} from "../services/github";
+import { fetchRepository, fetchCommitActivity, fetchOpenPRCount } from "../services/github";
 
 const FIVE_MINUTES = 5 * 60 * 1000;
 

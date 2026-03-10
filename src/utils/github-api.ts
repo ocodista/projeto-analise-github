@@ -37,8 +37,7 @@ export async function githubFetch<T>(path: string): Promise<T> {
 
   if (!response.ok) {
     const errorBody = await response.json().catch(() => null);
-    const message =
-      errorBody?.message ?? `GitHub API error: ${response.status}`;
+    const message = errorBody?.message ?? `GitHub API error: ${response.status}`;
     throw new Error(message);
   }
 
@@ -52,8 +51,7 @@ export async function githubFetchWithLinkCount(path: string): Promise<number> {
 
   if (!response.ok) {
     const errorBody = await response.json().catch(() => null);
-    const message =
-      errorBody?.message ?? `GitHub API error: ${response.status}`;
+    const message = errorBody?.message ?? `GitHub API error: ${response.status}`;
     throw new Error(message);
   }
 

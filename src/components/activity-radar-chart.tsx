@@ -1,29 +1,21 @@
 import ReactECharts from "echarts-for-react";
 import type { EChartsOption } from "echarts";
 import type { RepositoryComparison } from "../types/github";
-import {
-  CHART_COLORS,
-  DARK_LEGEND,
-  DARK_TOOLTIP,
-} from "../constants/chart-theme";
+import { CHART_COLORS, DARK_LEGEND, DARK_TOOLTIP } from "../constants/chart-theme";
 
 function normalize(values: number[]): number[] {
   const max = Math.max(...values, 1);
   return values.map((v) => Math.round((v / max) * 100));
 }
 
-function buildRadarOptions(
-  comparisons: RepositoryComparison[]
-): EChartsOption {
+function buildRadarOptions(comparisons: RepositoryComparison[]): EChartsOption {
   const stars = comparisons.map((c) => c.repository.stargazers_count);
   const forks = comparisons.map((c) => c.repository.forks_count);
   const issues = comparisons.map((c) => c.repository.open_issues_count);
   const openPRs = comparisons.map((c) => c.openPRCount);
   const mergedPRs = comparisons.map((c) => c.mergedPRCount);
   const contributors = comparisons.map((c) => c.contributorsCount);
-  const commits = comparisons.map((c) =>
-    c.commitActivity.reduce((sum, w) => sum + w.total, 0)
-  );
+  const commits = comparisons.map((c) => c.commitActivity.reduce((sum, w) => sum + w.total, 0));
 
   const normalizedStars = normalize(stars);
   const normalizedForks = normalize(forks);
@@ -113,10 +105,7 @@ export function ActivityRadarChart({ comparisons }: ActivityRadarChartProps) {
         </svg>
         Activity Radar
       </h3>
-      <ReactECharts
-        option={buildRadarOptions(comparisons)}
-        style={{ height: 250 }}
-      />
+      <ReactECharts option={buildRadarOptions(comparisons)} style={{ height: 250 }} />
     </div>
   );
 }

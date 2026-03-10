@@ -1,8 +1,6 @@
 function SkeletonBox({ className }: { className: string }) {
   return (
-    <div
-      className={`animate-pulse rounded-xl border border-border bg-surface ${className}`}
-    />
+    <div className={`animate-pulse rounded-xl border border-border bg-surface ${className}`} />
   );
 }
 

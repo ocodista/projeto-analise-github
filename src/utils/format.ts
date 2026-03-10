@@ -22,16 +22,14 @@ const RELATIVE_TIME_UNITS = [
 ] as const;
 
 export function formatRelativeDate(dateString: string): string {
-  const seconds = Math.floor(
-    (Date.now() - new Date(dateString).getTime()) / 1000
-  );
+  const seconds = Math.floor((Date.now() - new Date(dateString).getTime()) / 1000);
 
   for (const { max, divisor, unit } of RELATIVE_TIME_UNITS) {
     if (seconds < max) {
       const value = Math.floor(seconds / divisor);
       return new Intl.RelativeTimeFormat("en", { numeric: "auto" }).format(
         -value,
-        unit as Intl.RelativeTimeFormatUnit
+        unit as Intl.RelativeTimeFormatUnit,
       );
     }
   }
