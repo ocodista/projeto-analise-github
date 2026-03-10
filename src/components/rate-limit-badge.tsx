@@ -13,11 +13,7 @@ export function RateLimitBadge() {
   });
 
   if (isLoading) {
-    return (
-      <span className="text-xs text-neutral-600 animate-pulse">
-        Loading...
-      </span>
-    );
+    return <span className="text-xs text-neutral-600 animate-pulse">Loading...</span>;
   }
 
   if (isError || !data) return null;

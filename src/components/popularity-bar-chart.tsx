@@ -1,16 +1,9 @@
 import ReactECharts from "echarts-for-react";
 import type { EChartsOption } from "echarts";
 import type { RepositoryComparison } from "../types/github";
-import {
-  CHART_COLORS,
-  DARK_AXIS_STYLE,
-  DARK_LEGEND,
-  DARK_TOOLTIP,
-} from "../constants/chart-theme";
+import { CHART_COLORS, DARK_AXIS_STYLE, DARK_LEGEND, DARK_TOOLTIP } from "../constants/chart-theme";
 
-function buildPopularityOptions(
-  comparisons: RepositoryComparison[]
-): EChartsOption {
+function buildPopularityOptions(comparisons: RepositoryComparison[]): EChartsOption {
   const repoNames = comparisons.map((c) => c.repository.name);
 
   return {
@@ -70,10 +63,7 @@ export function PopularityBarChart({ comparisons }: PopularityBarChartProps) {
         </svg>
         Popularity Comparison
       </h3>
-      <ReactECharts
-        option={buildPopularityOptions(comparisons)}
-        style={{ height: 250 }}
-      />
+      <ReactECharts option={buildPopularityOptions(comparisons)} style={{ height: 250 }} />
     </div>
   );
 }

@@ -5,21 +5,14 @@ type SuggestedReposProps = {
   selectedRepos: string[];
 };
 
-export function SuggestedRepos({
-  onSelect,
-  selectedRepos,
-}: SuggestedReposProps) {
-  const availableRepos = SUGGESTED_REPOS.filter(
-    (repo) => !selectedRepos.includes(repo)
-  );
+export function SuggestedRepos({ onSelect, selectedRepos }: SuggestedReposProps) {
+  const availableRepos = SUGGESTED_REPOS.filter((repo) => !selectedRepos.includes(repo));
 
   if (availableRepos.length === 0) return null;
 
   return (
     <div className="flex flex-wrap gap-2">
-      <span className="mr-2 flex items-center text-xs font-medium text-neutral-600">
-        Suggested
-      </span>
+      <span className="mr-2 flex items-center text-xs font-medium text-neutral-600">Suggested</span>
       {availableRepos.map((repo) => (
         <button
           key={repo}
