@@ -48,18 +48,11 @@ export function App() {
           </header>
 
           <section className="mb-12">
-            <RepoSelector
-              selectedRepos={selectedRepos}
-              onAdd={addRepo}
-              onRemove={removeRepo}
-            />
+            <RepoSelector selectedRepos={selectedRepos} onAdd={addRepo} onRemove={removeRepo} />
           </section>
 
           {selectedRepos.length > 0 && (
-            <ErrorBoundary
-              FallbackComponent={ErrorFallback}
-              resetKeys={selectedRepos}
-            >
+            <ErrorBoundary FallbackComponent={ErrorFallback} resetKeys={selectedRepos}>
               <Suspense fallback={<DashboardSkeleton />}>
                 <ComparisonDashboard selectedRepos={selectedRepos} />
               </Suspense>

@@ -7,12 +7,7 @@ import type {
   CommitWeek,
   AggregatedCommitPoint,
 } from "../types/github";
-import {
-  CHART_COLORS,
-  DARK_AXIS_STYLE,
-  DARK_LEGEND,
-  DARK_TOOLTIP,
-} from "../constants/chart-theme";
+import { CHART_COLORS, DARK_AXIS_STYLE, DARK_LEGEND, DARK_TOOLTIP } from "../constants/chart-theme";
 
 function aggregateByWeek(weeks: CommitWeek[]): AggregatedCommitPoint[] {
   return weeks.map((w) => ({
@@ -47,16 +42,13 @@ const PERIOD_AGGREGATORS = {
 
 function buildCommitLineOptions(
   comparisons: RepositoryComparison[],
-  period: CommitPeriod
+  period: CommitPeriod,
 ): EChartsOption {
   const aggregate = PERIOD_AGGREGATORS[period];
 
-  const aggregatedData = comparisons.map((c) =>
-    aggregate(c.commitActivity)
-  );
+  const aggregatedData = comparisons.map((c) => aggregate(c.commitActivity));
 
-  const labels =
-    aggregatedData.find((d) => d.length > 0)?.map((p) => p.label) ?? [];
+  const labels = aggregatedData.find((d) => d.length > 0)?.map((p) => p.label) ?? [];
 
   return {
     tooltip: { ...DARK_TOOLTIP, trigger: "axis" },
@@ -72,8 +64,7 @@ function buildCommitLineOptions(
       axisLabel: {
         color: "#666",
         rotate: period === "week" ? 45 : 0,
-        interval:
-          period === "week" ? Math.floor(labels.length / 12) : 0,
+        interval: period === "week" ? Math.floor(labels.length / 12) : 0,
       },
     },
     yAxis: {
@@ -108,9 +99,7 @@ type CommitActivityLineChartProps = {
   comparisons: RepositoryComparison[];
 };
 
-export function CommitActivityLineChart({
-  comparisons,
-}: CommitActivityLineChartProps) {
+export function CommitActivityLineChart({ comparisons }: CommitActivityLineChartProps) {
   const [period, setPeriod] = useState<CommitPeriod>("week");
 
   return (
@@ -150,10 +139,7 @@ export function CommitActivityLineChart({
         </div>
       </div>
 
-      <ReactECharts
-        option={buildCommitLineOptions(comparisons, period)}
-        style={{ height: 300 }}
-      />
+      <ReactECharts option={buildCommitLineOptions(comparisons, period)} style={{ height: 300 }} />
     </div>
   );
 }

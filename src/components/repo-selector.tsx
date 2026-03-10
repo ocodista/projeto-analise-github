@@ -8,11 +8,7 @@ type RepoSelectorProps = {
   onRemove: (fullName: string) => void;
 };
 
-export function RepoSelector({
-  selectedRepos,
-  onAdd,
-  onRemove,
-}: RepoSelectorProps) {
+export function RepoSelector({ selectedRepos, onAdd, onRemove }: RepoSelectorProps) {
   const handleAdd = (fullName: string) => {
     if (!selectedRepos.includes(fullName)) {
       onAdd(fullName);

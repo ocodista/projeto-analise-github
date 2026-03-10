@@ -8,9 +8,7 @@ type ComparisonDashboardProps = {
   selectedRepos: string[];
 };
 
-export function ComparisonDashboard({
-  selectedRepos,
-}: ComparisonDashboardProps) {
+export function ComparisonDashboard({ selectedRepos }: ComparisonDashboardProps) {
   const comparisons = useRepositoryComparison(selectedRepos);
 
   return (

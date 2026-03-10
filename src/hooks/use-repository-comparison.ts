@@ -11,9 +11,7 @@ import type { RepositoryComparison } from "../types/github";
 
 const FIVE_MINUTES = 5 * 60 * 1000;
 
-export function useRepositoryComparison(
-  repoNames: string[]
-): RepositoryComparison[] {
+export function useRepositoryComparison(repoNames: string[]): RepositoryComparison[] {
   const repositoryQueries = useSuspenseQueries({
     queries: repoNames.map((name) => ({
       queryKey: QUERY_KEYS.repository(name),

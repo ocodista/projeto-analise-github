@@ -25,10 +25,7 @@ export function RepoSearch({ onSelect, selectedRepos }: RepoSearchProps) {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(event.target as Node)
-      ) {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
         setIsDropdownOpen(false);
       }
     };
@@ -103,13 +100,9 @@ export function RepoSearch({ onSelect, selectedRepos }: RepoSearchProps) {
                   className="h-6 w-6 rounded-full border border-border"
                 />
                 <div className="min-w-0 flex-1">
-                  <span className="font-medium text-neutral-200">
-                    {repo.full_name}
-                  </span>
+                  <span className="font-medium text-neutral-200">{repo.full_name}</span>
                   {repo.description && (
-                    <p className="truncate text-xs text-neutral-600">
-                      {repo.description}
-                    </p>
+                    <p className="truncate text-xs text-neutral-600">{repo.description}</p>
                   )}
                 </div>
                 <span className="text-xs text-neutral-600">

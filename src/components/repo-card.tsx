@@ -13,26 +13,15 @@ type MetricProps = {
 function Metric({ label, value }: MetricProps) {
   return (
     <div>
-      <p className="text-[10px] font-medium uppercase tracking-wider text-neutral-600">
-        {label}
-      </p>
+      <p className="text-[10px] font-medium uppercase tracking-wider text-neutral-600">{label}</p>
       <p className="mt-1 text-sm font-medium text-neutral-200">{value}</p>
     </div>
   );
 }
 
 export function RepoCard({ comparison }: RepoCardProps) {
-  const {
-    repository,
-    commitActivity,
-    openPRCount,
-    mergedPRCount,
-    contributorsCount,
-  } = comparison;
-  const totalCommits = commitActivity.reduce(
-    (sum, week) => sum + week.total,
-    0
-  );
+  const { repository, commitActivity, openPRCount, mergedPRCount, contributorsCount } = comparison;
+  const totalCommits = commitActivity.reduce((sum, week) => sum + week.total, 0);
 
   return (
     <div className="card-glow relative rounded-xl border border-border bg-surface p-6 transition-all duration-300 group hover:bg-surface-hover">
@@ -55,44 +44,18 @@ export function RepoCard({ comparison }: RepoCardProps) {
       </div>
 
       {repository.description && (
-        <p className="mb-6 h-10 text-sm text-neutral-500 line-clamp-2">
-          {repository.description}
-        </p>
+        <p className="mb-6 h-10 text-sm text-neutral-500 line-clamp-2">{repository.description}</p>
       )}
 
       <div className="grid grid-cols-3 gap-x-2 gap-y-6 border-t border-border pt-6">
-        <Metric
-          label="Stars"
-          value={formatCompactNumber(repository.stargazers_count)}
-        />
-        <Metric
-          label="Forks"
-          value={formatCompactNumber(repository.forks_count)}
-        />
-        <Metric
-          label="Contributors"
-          value={formatCompactNumber(contributorsCount)}
-        />
-        <Metric
-          label="Open PRs"
-          value={formatCompactNumber(openPRCount)}
-        />
-        <Metric
-          label="Merged PRs"
-          value={formatCompactNumber(mergedPRCount)}
-        />
-        <Metric
-          label="Commits (52w)"
-          value={formatCompactNumber(totalCommits)}
-        />
-        <Metric
-          label="Issues"
-          value={formatCompactNumber(repository.open_issues_count)}
-        />
-        <Metric
-          label="Last Push"
-          value={formatRelativeDate(repository.pushed_at)}
-        />
+        <Metric label="Stars" value={formatCompactNumber(repository.stargazers_count)} />
+        <Metric label="Forks" value={formatCompactNumber(repository.forks_count)} />
+        <Metric label="Contributors" value={formatCompactNumber(contributorsCount)} />
+        <Metric label="Open PRs" value={formatCompactNumber(openPRCount)} />
+        <Metric label="Merged PRs" value={formatCompactNumber(mergedPRCount)} />
+        <Metric label="Commits (52w)" value={formatCompactNumber(totalCommits)} />
+        <Metric label="Issues" value={formatCompactNumber(repository.open_issues_count)} />
+        <Metric label="Last Push" value={formatRelativeDate(repository.pushed_at)} />
       </div>
     </div>
   );
