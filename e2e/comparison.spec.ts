@@ -15,9 +15,9 @@ test.describe("repository comparison flow", () => {
       page.getByRole("link", { name: "vuejs/vue" })
     ).toBeVisible({ timeout: 20_000 });
 
-    await expect(page.getByText("Stars")).toBeVisible();
-    await expect(page.getByText("Forks")).toBeVisible();
-    await expect(page.getByText("Contributors")).toBeVisible();
+    await expect(page.getByText("Stars").first()).toBeVisible();
+    await expect(page.getByText("Forks").first()).toBeVisible();
+    await expect(page.getByText("Contributors").first()).toBeVisible();
 
     const charts = page.locator("canvas, [data-zr-dom-id]");
     await expect(charts.first()).toBeVisible({ timeout: 20_000 });
