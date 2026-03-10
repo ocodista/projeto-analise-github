@@ -38,7 +38,7 @@ export function App() {
                 Compare Repositories
               </h1>
               <p className="mt-2 text-sm text-neutral-500">
-                Analyze open-source projects side by side.
+                Analize repositórios de código open source lado a lado.
               </p>
             </div>
             <div className="flex items-center gap-4">
