@@ -2,7 +2,7 @@ name: Knip
 
 on:
   pull_request:
-    branches: [main]
+    branches: [main, feat/github-pages]
 
 jobs:
   knip:
