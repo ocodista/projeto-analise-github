@@ -65,7 +65,7 @@ export async function githubFetchWithLinkCount(path: string): Promise<number> {
   return lastMatch ? parseInt(lastMatch[1], 10) : 1;
 }
 
-export type RateLimit = {
+type RateLimit = {
   limit: number;
   remaining: number;
   resetAt: Date;
