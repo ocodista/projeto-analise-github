@@ -1,27 +1,19 @@
 # GitHub Repository Comparator
 
-Dashboard visual para comparar repositórios open-source do GitHub lado a lado.
+Compare repositórios do GitHub lado a lado com métricas em tempo real e gráficos interativos.
 
-## Features
+## O que faz
 
-- **Busca de repositórios** com debounce e sugestões curadas
-- **Comparação lado a lado** com cards de métricas (stars, forks, contributors, PRs abertos/mergeados, commits, issues)
-- **Gráfico de barras** para popularidade (stars, forks, watchers)
-- **Radar chart** com métricas normalizadas (7 dimensões)
-- **Gráfico de linha** para atividade de commits (filtro semanal/mensal)
-- **Rate limit** da API do GitHub exibido no header
-- **Token opcional** salvo no localStorage para maior cota de API
-- **Dark theme** inspirado no design system da Vercel
+Selecione repositórios das sugestões curadas ou busque por nome. O dashboard renderiza cards de métricas e três tipos de gráfico para comparação visual.
 
-## Stack
+**Métricas por repositório:** stars, forks, contributors, PRs abertos/mergeados, commits (52 semanas) e issues.
 
-- Vite + React + TypeScript
-- TailwindCSS v4
-- Apache ECharts (via echarts-for-react)
-- TanStack React Query (Suspense mode)
-- react-error-boundary
+**Gráficos:**
+- Barras — popularidade (stars, forks, watchers)
+- Radar — 7 dimensões normalizadas
+- Linha — atividade de commits (semanal/mensal)
 
-## Rodando localmente
+## Início rápido
 
 ```bash
 npm install
@@ -30,6 +22,30 @@ npm run dev
 
 Acesse `http://localhost:5173`.
 
-## Token GitHub (opcional)
+## Token do GitHub (opcional)
 
-Para aumentar o rate limit de 60 para 5.000 requests/hora, adicione um [Personal Access Token](https://github.com/settings/tokens) clicando no botão "No token" no header.
+A API do GitHub permite 60 requests/hora sem autenticação. Adicione um [Personal Access Token](https://github.com/settings/tokens) pelo botão no header para aumentar o limite para 5.000 requests/hora.
+
+## Stack
+
+- React 19 + TypeScript + Vite
+- TailwindCSS v4
+- TanStack React Query (Suspense mode)
+- Apache ECharts
+- react-error-boundary
+
+## Testes
+
+```bash
+npm test          # testes unitários (Vitest)
+npm run test:e2e  # testes e2e (Playwright)
+```
+
+## CI/CD
+
+| Workflow | Gatilho | Ação |
+|----------|---------|------|
+| CI | PR para main | Roda testes unitários |
+| Deploy | Push na main | Build e deploy no GitHub Pages |
+| Preview | PR aberto/atualizado | Deploy de preview + testes e2e |
+| Cleanup | PR fechado | Remove deploy de preview |
