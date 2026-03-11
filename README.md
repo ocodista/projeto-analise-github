@@ -1,30 +1,30 @@
 # GitHub Repository Comparator
 
-Compare GitHub repositories side by side with real-time metrics and interactive charts.
+Compare repositórios do GitHub lado a lado com métricas em tempo real e gráficos interativos.
 
-## What it does
+## O que faz
 
-Select repositories from curated suggestions or search by name. The dashboard renders metric cards and three chart types for visual comparison.
+Selecione repositórios das sugestões curadas ou busque por nome. O dashboard renderiza cards de métricas e três tipos de gráfico para comparação visual.
 
-**Metrics per repository:** stars, forks, contributors, open/merged PRs, commits (52 weeks), and issues.
+**Métricas por repositório:** stars, forks, contributors, PRs abertos/mergeados, commits (52 semanas) e issues.
 
-**Charts:**
-- Bar chart — popularity (stars, forks, watchers)
-- Radar chart — 7 normalized dimensions
-- Line chart — commit activity (weekly/monthly)
+**Gráficos:**
+- Barras — popularidade (stars, forks, watchers)
+- Radar — 7 dimensões normalizadas
+- Linha — atividade de commits (semanal/mensal)
 
-## Quick start
+## Início rápido
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open `http://localhost:5173`.
+Acesse `http://localhost:5173`.
 
-## GitHub token (optional)
+## Token do GitHub (opcional)
 
-The GitHub API allows 60 requests/hour without authentication. Add a [Personal Access Token](https://github.com/settings/tokens) via the header button to increase the limit to 5,000 requests/hour.
+A API do GitHub permite 60 requests/hora sem autenticação. Adicione um [Personal Access Token](https://github.com/settings/tokens) pelo botão no header para aumentar o limite para 5.000 requests/hora.
 
 ## Stack
 
@@ -34,18 +34,18 @@ The GitHub API allows 60 requests/hour without authentication. Add a [Personal A
 - Apache ECharts
 - react-error-boundary
 
-## Testing
+## Testes
 
 ```bash
-npm test          # unit tests (Vitest)
-npm run test:e2e  # e2e tests (Playwright)
+npm test          # testes unitários (Vitest)
+npm run test:e2e  # testes e2e (Playwright)
 ```
 
 ## CI/CD
 
-| Workflow | Trigger | Action |
-|----------|---------|--------|
-| CI | PR to main | Runs unit tests |
-| Deploy | Push to main | Builds and deploys to GitHub Pages |
-| Preview | PR opened/updated | Deploys preview + runs e2e tests |
-| Cleanup | PR closed | Removes preview deployment |
+| Workflow | Gatilho | Ação |
+|----------|---------|------|
+| CI | PR para main | Roda testes unitários |
+| Deploy | Push na main | Build e deploy no GitHub Pages |
+| Preview | PR aberto/atualizado | Deploy de preview + testes e2e |
+| Cleanup | PR fechado | Remove deploy de preview |
